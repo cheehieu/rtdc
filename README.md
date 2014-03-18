@@ -7,6 +7,7 @@ Uses the TMP441 with breakouts for the Power Measurement Daughter Card (PMDC) to
 
 This repository includes:
 - Altium library, schematic, and board files
+- PCB gerbers and drill files
 - Bill of materials
 - Linux device driver
 - C code for integrating with the PMDC MSP430 source code
