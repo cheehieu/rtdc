@@ -11,8 +11,8 @@ i2cset -y 1 0x4c 0xfc 0x1       #software reset
 i2cset -y 1 0x4c 0x9 0x04       #extended temp range
 i2cset -y 1 0x4c 0xA 0x1C       #resistance correction, channels enabled
 i2cset -y 1 0x4c 0xB 0x7        #fastest conversion rate
-#i2cset -y 1 0x4c 0xC 0x8        #beta compensation enabled, n=1.000
-#i2cset -y 1 0x4c 0x21 0x7       #n-factor correction, n=1.02389
+i2cset -y 1 0x4c 0xC 0x8        #beta compensation enabled, n=1.000
+i2cset -y 1 0x4c 0x21 0x7       #n-factor correction, n=1.02389
 #i2cset -y 1 0x4c 0xC 0x7       #beta compensation disabled, n=1.008
 #i2cset -y 1 0x4c 0x21 0x4      #n-factor correction, n=1.02162
 
