@@ -1,6 +1,7 @@
 rtdc
 ====
 <img src="images/rtdc-3d-render.jpg">
+<img src="images/rtdc-pcb-assembled.jpg">
 
 The Remote Temperature Daughter Card (RTDC) uses a TMP441 to monitor the temperature of a remote thermal diode. By using a sequential current excitation, the RTDC can extract a differential VBE on the transistor and calculate its junction temperature. The TMP441 has features to improve measurement accuracy such as beta compensation, series resistance cancellation, and ideality factor correction. Communication is done over an I2C bus, with the RTDC having breakouts for the Power Measurement Daughter Card (PMDC) or any other I2C master such as the BeagleBone Black.
 
