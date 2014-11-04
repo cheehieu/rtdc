@@ -1,5 +1,8 @@
 rtdc
 ====
+<img src="images/rtdc-oshpark-top.png">
+<img src="images/rtdc-oshpark-bottom.png">
+
 <img src="images/rtdc-3d-render.jpg">
 
 <img src="images/rtdc-pcb-assembled.jpg">
