@@ -11,7 +11,7 @@ Many integrated circuits have thermal specification requirements, which include 
 
 One way to do this is by using diode-connected transistors built into the processor chips. Temperature measurement is performed by measuring the change in forward bias voltage of a diode when two different currents are forced through the junction. This solution is typically low-cost, reduces component count, overcomes thermal gradient and placement issues encountered when trying to place external sensors, and is accurate to ±1°C.
 
-The Remote Temperature Daughter Card (RTDC) uses a [TMP441](http://www.ti.com/lit/ds/symlink/tmp441.pdf) to monitor the temperature of a remote thermal diode. By using a sequential current excitation, the RTDC can extract a differential VBE on the remote transistor and calculate its junction temperature. The TMP441 has features to improve measurement accuracy such as beta compensation, series resistance cancellation, and ideality factor correction. Communication is done over an I2C bus, with the RTDC having breakouts for a Power Measurement Daughter Card (PMDC) or any other I2C master such as a BeagleBone Black.
+The Remote Temperature Daughter Card (RTDC) uses a [TMP441](http://www.ti.com/lit/ds/symlink/tmp441.pdf) to monitor the temperature of a remote thermal diode. By using a sequential current excitation, the RTDC can extract a differential V\_BE on the remote transistor and calculate its junction temperature. The TMP441 has features to improve measurement accuracy such as beta compensation, series resistance cancellation, and ideality factor correction. Communication is done over an I2C bus, with the RTDC having breakouts for a Power Measurement Daughter Card (PMDC) or any other I2C master such as a BeagleBone Black.
 
 This repository includes:
 
@@ -33,15 +33,14 @@ The TMP441 on the RTDC interfaces with a remote thermal diode via two connection
 
 The RTDC can be used in GND collector-connected transistor configuration and also diode-connected transistor configuration. Diode-connected transistor configuration provides better settling time, while GND collector-connected transistor configuration provides better series resistance cancellation.
 
-Errors in remote temperature sensor readings are typically the consequence of the ideality factor and current excitation. The TMP441 uses 6uA for I_low and 120uA for I_high. It also features automatic beta compensation (correction), series resistance cancellation, and programmable non-ideality factor. 
-To reduce noise and series resistance, the PCB layout keeps diode traces short without using vias or layer changes. Ground guard traces are also used, and a 330pF filter capacitor between DXP and DXN helps to minimize the effects of noise.
+Errors in remote temperature sensor readings are typically the consequence of the ideality factor and current excitation. The TMP441 uses 6uA for I\_low and 120uA for I\_high. It also features automatic beta compensation (correction), series resistance cancellation, and programmable non-ideality factor. To reduce noise and series resistance, the PCB layout keeps diode traces short without using vias or layer changes. Ground guard traces are also used, and a 330pF filter capacitor between DXP and DXN helps to minimize the effects of noise.
 
 The initial prototype is available for purchase on [OSH Park](https://oshpark.com/shared_projects/W2ilfkCv) for a whopping $1.65.
 
 ### Usage
 The driving use case for the RTDC was to measure the junction temperature of the AM437x processor, which contains special temperature monitoring hardware. The AM437x contains a GND collector-connected PNP transistor, which connects to a thermal diode to estimate junction temperature. The junction temperature can be monitored remotely with an RTDC and BeagleBone Black, serving as I2C master and host computer. 
 
-The RTDC plugs directly into header pins on each test platform. The RTDC needs a 4-wire cable to interface with the BeagleBone Black. This cable connects the RTDC's 3.3V, GND, and I2C signals to the BeagleBone's P9 expansion header. Be sure to align the polarity of the TEMP_DIODE signals with the RTDC's J3 receptacle; TEMP_DIODE_P is pin 1.
+The RTDC plugs directly into header pins on each test platform. The RTDC needs a 4-wire cable to interface with the BeagleBone Black. This cable connects the RTDC's 3.3V, GND, and I2C signals to the BeagleBone's P9 expansion header. Be sure to align the polarity of the TEMP\_DIODE signals with the RTDC's J3 receptacle; TEMP\_DIODE\_P is pin 1.
 
 | Signal | RTDC |  BBB  |
 |:------:|:----:|:-----:|
@@ -61,7 +60,7 @@ The RTDC software is a Bash script, which configures the TMP441 and reads/conver
 
 ```bash
 ...
-#Take a measurement (store high and low bytes separately for endian correction)
+#Take a measurement (store bytes separately for endian correction)
 REMOTE_HIGH=$(i2cget -y 1 0x4c 0x1 b)
 REMOTE_LOW=$(i2cget -y 1 0x4c 0x11 b)
 ...
