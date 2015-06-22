@@ -42,7 +42,7 @@ The driving use case for the RTDC was to measure the junction temperature of the
 
 The RTDC plugs directly into header pins on each test platform. The RTDC needs a 4-wire cable to interface with the BeagleBone Black. This cable connects the RTDC's 3.3V, GND, and I2C signals to the BeagleBone's P9 expansion header. Be sure to align the polarity of the TEMP\_DIODE signals with the RTDC's J3 receptacle; TEMP\_DIODE\_P is pin 1.
 
-| Signal | RTDC |  BBB  |
+| Signal | RTDC | BBB   |
 |--------|------|-------|
 | I2CSCL | J1.1 | P9.19 |
 | I2CSCA | J1.2 | P9.20 |
